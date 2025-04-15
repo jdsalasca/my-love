@@ -7,7 +7,7 @@ export const es = {
 
   // Sección de Contacto
   contact: {
-    title: "Momentos Especiales",
+    title: "Cuando estoy para ti",
     pain: {
       title: "En los momentos difíciles",
       description: "Siempre estaré ahí para ti cuando me necesites",
@@ -67,7 +67,7 @@ export const es = {
   // Promesa
   promise: {
     title: "Nuestra Promesa",
-    text: "Tu Valentina Guerrero, juras cuidarme y respetarme por el resto de nuestros días, si yo Juan Juro cuidar tu corazón y todos los días estar para ti. ",
+    text: "Tu Valentina Guerrero, juras cuidarme y respetarme por el resto de nuestros días, si yo Juan Juro cuidar tu corazón? ",
     yesButton: "Sí, lo juro",
     noButton: "No",
     modalTitle: "Pos ya lo hago mi amorrrrr!",

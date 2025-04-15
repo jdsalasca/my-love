@@ -57,6 +57,18 @@ function App() {
           <p className="text-2xl md:text-3xl text-love-dark/80">
             {t.hero.subtitle}
           </p>
+          <motion.div
+            className="mt-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5, duration: 0.8 }}
+          >
+            <img 
+              src="/images/us-pixelart.png" 
+              alt="Us Pixel Art" 
+              className="max-w-xs mx-auto rounded-lg shadow-lg"
+            />
+          </motion.div>
         </motion.div>
       </section>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { Dialog } from 'primereact/dialog';
 
 interface LoveLetterProps {
@@ -56,9 +56,9 @@ const LoveLetter: React.FC<LoveLetterProps> = ({ t }) => {
           </div>
         }
         footer={
-          <div className="flex justify-center ">
+          <div className="flex justify-center  ">
             <motion.button
-              className="bg-love-accent text-white px-4 py-2 rounded-full shadow-lg text-black"
+              className="bg-love-accent  px-4 py-2 rounded-full shadow-lg text-black"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={closeLetter}

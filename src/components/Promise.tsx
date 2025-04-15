@@ -10,6 +10,7 @@ const Promise: React.FC<PromiseProps> = ({ t }) => {
   const [showModal, setShowModal] = useState(false);
   const [answered, setAnswered] = useState(false);
   const [answer, setAnswer] = useState<boolean | null>(null);
+  const [noClickCount, setNoClickCount] = useState(0);
 
   const handleYes = () => {
     setAnswer(true);
@@ -18,8 +19,23 @@ const Promise: React.FC<PromiseProps> = ({ t }) => {
   };
 
   const handleNo = () => {
-    setAnswer(false);
-    setAnswered(true);
+    if (noClickCount >= 4) {
+      setAnswer(false);
+      setAnswered(true);
+    } else {
+      setNoClickCount(noClickCount + 1);
+    }
+  };
+
+  const getNoButtonText = () => {
+    const noTexts = [
+      t.promise.noButton,
+      t.promise.areYouSure || "De verdad?",
+      "¿Estás segura?",
+      "¿Estás completamente seguraaaa?",
+      "Esta es tu última oportunidad"
+    ];
+    return noTexts[Math.min(noClickCount, 4)];
   };
 
   const closeModal = () => {
@@ -64,8 +80,16 @@ const Promise: React.FC<PromiseProps> = ({ t }) => {
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={handleNo}
+              animate={{ 
+                scale: noClickCount > 0 ? [1, 1.1, 1] : 1,
+                x: noClickCount > 0 ? [0, 5, -5, 0] : 0
+              }}
+              transition={{ 
+                duration: 0.5, 
+                repeat: noClickCount > 0 ? 1 : 0
+              }}
             >
-              {t.promise.noButton}
+              {getNoButtonText()}
             </motion.button>
           </div>
         ) : (
