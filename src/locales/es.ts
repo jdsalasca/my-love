@@ -49,7 +49,7 @@ export const es = {
       {
         title: "Cita en Storia D'Amore, un almuerzo rico con mi amor hermoso :3",
         date: "Viernes 18 de Abril",
-        description: "pendiente de confirmación"
+        description: "O en tunja si hay cambio de planes :3 "
       },
       {
         title: "Salida al Jardín Botánico",
