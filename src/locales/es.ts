@@ -11,7 +11,7 @@ export const es = {
     pain: {
       title: "En los momentos difíciles",
       description: "Siempre estaré ahí para ti cuando me necesites",
-      phone: "+1234567890"
+      phone: "3108539630"
     },
     happiness: {
       title: "En la felicidad",
@@ -76,13 +76,13 @@ export const es = {
   // Carrusel
   carousel: {
     phases: [
-      { title: "Primer encuentro", description: "El momento en que nuestras miradas se cruzaron" },
-      { title: "Primeras conversaciones", description: "Descubriendo lo mucho que teníamos en común" },
-      { title: "Primer beso", description: "Un momento mágico que nunca olvidaré" },
-      { title: "Oficialmente juntos", description: "El comienzo de nuestra historia de amor" },
-      { title: "Nuestras primeras aventuras", description: "Explorando el mundo juntos" },
-      { title: "Superando desafíos", description: "Creciendo más fuertes cada día" },
-      { title: "Construyendo sueños", description: "Planeando nuestro futuro juntos" }
+      { title: "Primer encuentro", description: "El momento en que nuestras miradas se cruzaron", image: "/images/primer-dia-novios.jpg" },
+      { title: "Primeras conversaciones", description: "Descubriendo lo mucho que teníamos en común", image: "/images/salida-miniso.jpg" },
+      { title: "Primer beso", description: "Un momento mágico que nunca olvidaré", image: "/images/dibujando-amor.jpg" },
+      { title: "Oficialmente juntos", description: "El comienzo de nuestra historia de amor", image: "/images/salida-pelicula.jpg" },
+      { title: "Nuestras primeras aventuras", description: "Explorando el mundo juntos", image: "/images/salida-villadeleyva.jpg" },
+      { title: "Superando desafíos", description: "Creciendo más fuertes cada día", image: "/images/paseo-caminata.jpg" },
+      { title: "Construyendo sueños", description: "Planeando nuestro futuro juntos", image: "/images/salida-villadeleyva-lindos.jpg" }
     ]
   }
 }; 

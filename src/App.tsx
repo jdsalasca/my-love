@@ -15,16 +15,22 @@ function App() {
   // Sample items for the carousel
   const lovePhases = t.carousel.phases;
 
-  const carouselItemTemplate = (item: { title: string; description: string }) => {
+  const carouselItemTemplate = (item: { title: string; description: string; image: string }) => {
     return (
       <motion.div 
-        className="relative h-80 w-full rounded-xl overflow-hidden bg-gradient-to-br from-pink-100 to-purple-100"
+        className="relative h-96 w-full rounded-xl overflow-hidden shadow-lg"
         whileHover={{ scale: 1.02 }}
         transition={{ duration: 0.3 }}
       >
-        <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-          <h3 className="text-love-accent text-2xl font-bold mb-4">{item.title}</h3>
-          <p className="text-love-dark/90">{item.description}</p>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent z-10" />
+        <img 
+          src={item.image} 
+          alt={item.title} 
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 flex flex-col items-center justify-end p-6 text-center z-20">
+          <h3 className="text-white text-2xl font-bold mb-2">{item.title}</h3>
+          <p className="text-white/90 mb-4">{item.description}</p>
         </div>
       </motion.div>
     );
@@ -34,7 +40,6 @@ function App() {
     <div className="min-h-screen bg-animated">
       <AnimatedHearts />
       <BackgroundMusic t={t} />
-      <LoveLetter t={t} />
       
       {/* Hero Section */}
       <section className="min-h-screen flex items-center justify-center relative overflow-hidden px-4">
@@ -59,6 +64,9 @@ function App() {
           <AnniversaryCountdown t={t} />
         </div>
       </section>
+      
+      {/* Love Letter (moved to appear after countdown) */}
+      <LoveLetter t={t} />
 
       {/* Contact Section */}
       <Contact t={t} />
@@ -82,7 +90,7 @@ function App() {
         >
           {t.things.subtitle}
         </motion.p>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-5xl mx-auto mt-10">
           <Carousel
             value={lovePhases}
             itemTemplate={carouselItemTemplate}
@@ -91,6 +99,8 @@ function App() {
             autoplayInterval={5000}
             className="custom-carousel"
             circular
+            showIndicators
+            showNavigators
           />
         </div>
       </section>
