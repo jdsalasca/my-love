@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Dialog } from 'primereact/dialog';
 
 interface LoveLetterProps {
@@ -19,15 +19,17 @@ const LoveLetter: React.FC<LoveLetterProps> = ({ t }) => {
 
   return (
     <>
-      <motion.button
-        className="bg-love-accent text-white px-4 py-2 rounded-full shadow-lg flex items-center justify-center absolute top-4 right-4 z-10"
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-        onClick={openLetter}
-      >
-        <span className="mr-2">💌</span>
-        <span>{t.loveLetter.open}</span>
-      </motion.button>
+      <div className="flex justify-center -mt-10 mb-16 relative z-20">
+        <motion.button
+          className="bg-love-accent text-white px-6 py-3 rounded-full shadow-lg flex items-center justify-center"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={openLetter}
+        >
+          <span className="text-xl mr-2">💌</span>
+          <span className="text-black">{t.loveLetter.open}</span>
+        </motion.button>
+      </div>
 
       <Dialog
         visible={isOpen}
@@ -54,9 +56,9 @@ const LoveLetter: React.FC<LoveLetterProps> = ({ t }) => {
           </div>
         }
         footer={
-          <div className="flex justify-center">
+          <div className="flex justify-center ">
             <motion.button
-              className="bg-love-accent text-white px-4 py-2 rounded-full shadow-lg"
+              className="bg-love-accent text-white px-4 py-2 rounded-full shadow-lg text-black"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               onClick={closeLetter}

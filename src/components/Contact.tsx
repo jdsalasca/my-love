@@ -29,7 +29,7 @@ const Contact: React.FC<ContactProps> = ({ t }) => {
             <p className="text-love-dark mb-4">{t.contact.pain.description}</p>
             <a 
               href={`tel:${t.contact.pain.phone}`} 
-              className="love-button inline-block"
+              className="love-button inline-block text-black"
             >
               {t.contact.pain.phone}
             </a>
@@ -72,17 +72,7 @@ const Contact: React.FC<ContactProps> = ({ t }) => {
           </Card>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-        >
-          <Card className="love-card">
-            <h3 className="text-2xl font-bold text-love-accent mb-4">{t.contact.challenges.title}</h3>
-            <p className="text-love-dark">{t.contact.challenges.description}</p>
-          </Card>
-        </motion.div>
+        
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}

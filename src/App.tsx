@@ -8,6 +8,8 @@ import AnniversaryCountdown from './components/AnniversaryCountdown';
 import BackgroundMusic from './components/BackgroundMusic';
 import LoveLetter from './components/LoveLetter';
 import Contact from './components/Contact';
+import WhatsNew from './components/WhatsNew';
+import Promise from './components/Promise';
 
 function App() {
   const [t] = useState(() => es);
@@ -65,8 +67,14 @@ function App() {
         </div>
       </section>
       
-      {/* Love Letter (moved to appear after countdown) */}
+      {/* Love Letter (positioned after countdown) */}
       <LoveLetter t={t} />
+
+      {/* What's New Section */}
+      <WhatsNew t={t} />
+
+      {/* Promise Section */}
+      <Promise t={t} />
 
       {/* Contact Section */}
       <Contact t={t} />

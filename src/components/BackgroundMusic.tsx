@@ -6,7 +6,7 @@ interface BackgroundMusicProps {
 }
 
 const BackgroundMusic: React.FC<BackgroundMusicProps> = ({ t }) => {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const audioRef = useRef<HTMLAudioElement>(null);
 
@@ -27,8 +27,18 @@ const BackgroundMusic: React.FC<BackgroundMusicProps> = ({ t }) => {
       
       audioRef.current.addEventListener('ended', handleSongEnd);
       
-      // Cleanup event listener
+      // Start playing after 2 seconds
+      const timer = setTimeout(() => {
+        if (audioRef.current) {
+          audioRef.current.play()
+            .then(() => setIsPlaying(true))
+            .catch(e => console.error("Error playing audio:", e));
+        }
+      }, 2000);
+      
+      // Cleanup event listener and timer
       return () => {
+        clearTimeout(timer);
         if (audioRef.current) {
           audioRef.current.removeEventListener('ended', handleSongEnd);
         }
