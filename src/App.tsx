@@ -58,7 +58,7 @@ function App() {
             {t.hero.subtitle}
           </p>
           <motion.div
-            className="mt-8"
+            className="mt-8 flex flex-col md:flex-row justify-center items-center gap-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
@@ -66,7 +66,12 @@ function App() {
             <img 
               src="/images/us-pixelart.png" 
               alt="Us Pixel Art" 
-              className="max-w-xs mx-auto rounded-lg shadow-lg"
+              className="max-w-xs rounded-lg shadow-lg"
+            />
+            <img 
+              src="/images/us-2-pixelart.png" 
+              alt="Us Pixel Art 2" 
+              className="max-w-xs rounded-lg shadow-lg"
             />
           </motion.div>
         </motion.div>

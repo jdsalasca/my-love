@@ -77,13 +77,13 @@ const BackgroundMusic: React.FC<BackgroundMusicProps> = ({ t }) => {
       >
         {isPlaying ? (
           <>
-            <span className="mr-2">🔊</span>
-            <span>{t.music.pause}</span>
+            <span className="mr-2 text-black">🔊</span>
+            <span className="text-black">{t.music.pause}</span>
           </>
         ) : (
           <>
-            <span className="mr-2">🔇</span>
-            <span>{t.music.play}</span>
+            <span className="mr-2 text-black">🔇</span>
+            <span className="text-black">{t.music.play}</span>
           </>
         )}
       </motion.button>
