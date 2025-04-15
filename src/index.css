@@ -3,7 +3,7 @@
 /* Import PrimeReact Core and Icons CSS */
 @import 'primereact/resources/primereact.min.css';
 @import 'primeicons/primeicons.css';
-
+@import "tailwindcss/theme.css";
 /* Import PrimeReact Theme */
 @import 'primereact/resources/themes/lara-light-blue/theme.css';
 
@@ -22,12 +22,11 @@
 
 @layer components {
   .section-title {
-    @apply text-4xl md:text-5xl font-bold  text-center mb-8
-           bg-gradient-to-r   bg-clip-text text-transparent;
+    @apply text-4xl md:text-5xl font-bold text-center  mb-6;
   }
 
   .section-subtitle {
-    @apply text-xl  text-center mb-12 max-w-2xl mx-auto;
+    @apply text-xl text-center  mb-12 max-w-2xl mx-auto;
   }
 /*  */
  
@@ -38,6 +37,14 @@
 
   .countdown-label {
     @apply text-sm font-medium;
+  }
+
+  .love-button {
+    @apply  text-white px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300;
+  }
+
+  .love-card {
+    @apply bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden p-6 h-full;
   }
 }
 
@@ -54,26 +61,26 @@
 }
 
 .custom-carousel .p-carousel-indicators {
-  @apply mb-4;
+  margin-top: 1rem;
 }
 
 .custom-carousel .p-carousel-indicator button {
-  @apply w-3 h-3 rounded-full 
-         transition-all duration-300 ;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: var(--color-love-accent);
+  opacity: 0.3;
+  transition: all 0.3s ease;
 }
 
 .custom-carousel .p-carousel-indicator.p-highlight button {
-  @apply  transform scale-110;
+  opacity: 1;
+  transform: scale(1.2);
 }
 
 /* Animated background */
 .bg-animated {
-  background: linear-gradient(
-    45deg,
-    #FFFAF2,
-    #FFF0E5,
-    #FFD166
-  );
+  background: linear-gradient(-45deg, #ffefef, #ffe5e5, #f8e0ed, #fce1e4);
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
 }
@@ -119,4 +126,54 @@
 
 .text-gradient {
   @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-500;
+}
+
+/* Animation for floating effect */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.love-letter-dialog .p-dialog-header {
+  background-color: #ffefef;
+  border-bottom: 1px solid #ffe5e5;
+}
+
+.love-letter-dialog .p-dialog-content {
+  background-color: #ffefef;
+  padding: 1.5rem;
+}
+
+.love-letter-dialog .p-dialog-footer {
+  background-color: #ffefef;
+  border-top: 1px solid #ffe5e5;
+}
+
+/* Define theme colors */
+:root {
+  --love-accent: var(--color-love-accent);
+  --love-dark: var(--color-love-dark);
+  --love-light: var(--color-love-light);
+}
+
+/* tailwind directives */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-love-accent: #ff6b6b;
+  --color-love-dark: #2d3748;
+  --color-love-light: #f8f9fa;
 } 

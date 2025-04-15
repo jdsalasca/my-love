@@ -8,7 +8,11 @@ interface TimeLeft {
   seconds: number;
 }
 
-const AnniversaryCountdown: React.FC = () => {
+interface CountdownProps {
+  t: any;
+}
+
+const AnniversaryCountdown: React.FC<CountdownProps> = ({ t }) => {
   const [timeLeft, setTimeLeft] = useState<TimeLeft>({
     days: 0,
     hours: 0,
@@ -17,9 +21,15 @@ const AnniversaryCountdown: React.FC = () => {
   });
 
   useEffect(() => {
-    // Set the anniversary date (one month from now)
-    const anniversaryDate = new Date();
-    anniversaryDate.setMonth(anniversaryDate.getMonth() + 1);
+    // Set the anniversary date to May 15
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    const anniversaryDate = new Date(currentYear, 4, 15); // May is month 4 (0-indexed)
+    
+    // If today's date is past May 15 of this year, set to next year's May 15
+    if (now > anniversaryDate) {
+      anniversaryDate.setFullYear(currentYear + 1);
+    }
 
     const calculateTimeLeft = () => {
       const difference = +anniversaryDate - +new Date();
@@ -41,16 +51,16 @@ const AnniversaryCountdown: React.FC = () => {
   }, []);
 
   const countdownItems = [
-    { label: 'Días', value: timeLeft.days },
-    { label: 'Horas', value: timeLeft.hours },
-    { label: 'Minutos', value: timeLeft.minutes },
-    { label: 'Segundos', value: timeLeft.seconds },
+    { label: t.days, value: timeLeft.days },
+    { label: t.hours, value: timeLeft.hours },
+    { label: t.minutes, value: timeLeft.minutes },
+    { label: t.seconds, value: timeLeft.seconds },
   ];
 
   return (
     <div className="bg-love-light p-6 rounded-lg shadow-lg">
       <h3 className="text-2xl font-bold text-center text-love-accent mb-4">
-        Tiempo para nuestro próximo mes juntos
+        {t.anniversary} {t.together}
       </h3>
       <div className="flex justify-center space-x-4">
         {countdownItems.map((item, index) => (

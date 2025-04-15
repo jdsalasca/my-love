@@ -1,10 +1,59 @@
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
-const BackgroundMusic: React.FC = () => {
-  const [isPlaying, setIsPlaying] = useState(false);
+interface BackgroundMusicProps {
+  t: any;
+}
+
+const BackgroundMusic: React.FC<BackgroundMusicProps> = ({ t }) => {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const audioRef = useRef<HTMLAudioElement>(null);
+
+  const songs = [
+    "/music/romantic-background.mp3",
+    "/music/second-love-song.mp3"
+  ];
+
+  useEffect(() => {
+    // Setup audio
+    if (audioRef.current) {
+      audioRef.current.volume = 0.5;
+      
+      // Handle song ended event to play the next one
+      const handleSongEnd = () => {
+        setCurrentSongIndex((prevIndex) => (prevIndex + 1) % songs.length);
+      };
+      
+      audioRef.current.addEventListener('ended', handleSongEnd);
+      
+      // Cleanup event listener
+      return () => {
+        if (audioRef.current) {
+          audioRef.current.removeEventListener('ended', handleSongEnd);
+        }
+      };
+    }
+  }, []);
+
+  // Update audio src when song changes
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.src = songs[currentSongIndex];
+      if (isPlaying) {
+        audioRef.current.play().catch(e => console.error("Error playing audio:", e));
+      }
+    }
+  }, [currentSongIndex, isPlaying]);
 
   const togglePlay = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play().catch(e => console.error("Error playing audio:", e));
+      }
+    }
     setIsPlaying(!isPlaying);
   };
 
@@ -19,23 +68,20 @@ const BackgroundMusic: React.FC = () => {
         {isPlaying ? (
           <>
             <span className="mr-2">🔊</span>
-            <span>Música</span>
+            <span>{t.music.pause}</span>
           </>
         ) : (
           <>
             <span className="mr-2">🔇</span>
-            <span>Música</span>
+            <span>{t.music.play}</span>
           </>
         )}
       </motion.button>
-      {isPlaying && (
-        <audio
-          src="/music/romantic-background.mp3"
-          autoPlay
-          loop
-          className="hidden"
-        />
-      )}
+      <audio
+        ref={audioRef}
+        src={songs[currentSongIndex]}
+        className="hidden"
+      />
     </div>
   );
 };

@@ -9,4 +9,9 @@ export default defineConfig({
       localsConvention: 'camelCase',
     },
   },
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
 })
