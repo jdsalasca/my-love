@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+/* Import PrimeReact Core and Icons CSS */
+@import 'primereact/resources/primereact.min.css';
+@import 'primeicons/primeicons.css';
+
+/* Import PrimeReact Theme */
+@import 'primereact/resources/themes/lara-light-blue/theme.css';
+
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-sans;
+  }
+}
+
+@layer components {
+  .section-title {
+    @apply text-4xl md:text-5xl font-bold  text-center mb-8
+           bg-gradient-to-r   bg-clip-text text-transparent;
+  }
+
+  .section-subtitle {
+    @apply text-xl  text-center mb-12 max-w-2xl mx-auto;
+  }
+/*  */
+ 
+
+  .countdown-number {
+    @apply text-3xl font-bold  mb-1;
+  }
+
+  .countdown-label {
+    @apply text-sm font-medium;
+  }
+}
+
+.custom-carousel {
+  @apply rounded-xl overflow-hidden ;
+}
+
+.custom-carousel .p-carousel-container {
+  @apply rounded-xl;
+}
+
+.custom-carousel .p-carousel-items-container {
+  @apply rounded-xl;
+}
+
+.custom-carousel .p-carousel-indicators {
+  @apply mb-4;
+}
+
+.custom-carousel .p-carousel-indicator button {
+  @apply w-3 h-3 rounded-full 
+         transition-all duration-300 ;
+}
+
+.custom-carousel .p-carousel-indicator.p-highlight button {
+  @apply  transform scale-110;
+}
+
+/* Animated background */
+.bg-animated {
+  background: linear-gradient(
+    45deg,
+    #FFFAF2,
+    #FFF0E5,
+    #FFD166
+  );
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Smooth transitions */
+.fade-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms ease-in, transform 300ms ease-out;
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 300ms ease-in, transform 300ms ease-out;
+}
+
+.card-hover {
+  @apply transition-transform duration-300 hover:scale-105;
+}
+
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-purple-500;
+} 
