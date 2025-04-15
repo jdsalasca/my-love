@@ -43,6 +43,7 @@
     @apply  text-white px-4 py-2 rounded-full shadow-md hover:shadow-lg transition-all duration-300;
   }
 
+  
   .love-card {
     @apply bg-white rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden p-6 h-full;
   }
